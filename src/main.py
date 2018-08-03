@@ -148,8 +148,8 @@ def adf_results(data):
     print(f'T-Statistic: {result[0]:.5f}')
     print(f'p-value: {result[1]:.5f}')
     print(f"adf-1%: {result[4]['1%']:.5f}")
-    print(f"adf-1%: {result[4]['5%']:.5f}")
-    print(f"adf-1%: {result[4]['10%']:.5f}")
+    print(f"adf-5%: {result[4]['5%']:.5f}")
+    print(f"adf-10%: {result[4]['10%']:.5f}")
     print(f'# Lags: {result[2]}')
     print(f'# of observations: {result[3]}')
     if result[1] <= 0.05:
