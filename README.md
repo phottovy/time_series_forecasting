@@ -127,7 +127,7 @@ Optimized to adjust for lags. **14(two weeks)** was the best number.
 |differenced_2_data    |  3 days|
 |differenced_2_cycle    | 1 days|
 
-## RMSE of Original Predictors
+<!-- ## RMSE of Original Predictors
 |Predictor|%|
 |:-|-:|
 |differenced_1_cycle |    79.775263|
@@ -135,7 +135,7 @@ Optimized to adjust for lags. **14(two weeks)** was the best number.
 |differenced_1_data   |  100.160657|
 |differenced_1_data   |  100.160657|
 |differenced_2_data   |  170.483380|
-|differenced_2_cycle  |  189.093569|
+|differenced_2_cycle  |  189.093569| -->
 
 
 ## How did my predictors do?
@@ -150,21 +150,23 @@ Optimized to adjust for lags. **14(two weeks)** was the best number.
 |differenced_2_cycle  |   1 days|
 
 
-
 ## Next Steps
  * Finish readme
  * Boosting
  * RNN & LSTM
+ * Presentation of Results
 
 
 
 
-<!-- References
-End to end
-topic 1 part 9
-clickfox
-jose portilla
-interpretting error -->
+## References:
+>(I had to do a lot of learning in a short period of time. I could not have gotten as far as I did on part one of this project without the following resources)
+
+* [An End-to-End Project on Time Series Analysis and Forecasting with Python][17] by Susan Li   
+* [Open Machine Learning Course. Topic 9. Part 1. Time series analysis in Python][18] by Dmitriy Sergeev  
+* [Python for Financial Analysis and Algorithmic Trading][19] by Jose Portilla  
+* [A comprehensive beginner’s guide to create a Time Series Forecast (with Codes in Python)][20] by Aarshay Jain  
+* [Another Look at Forecast-Accuracy Metrics for Intermittent Demand][21] by Rob J. Hyndman
 
 
 
@@ -187,3 +189,8 @@ interpretting error -->
 [14]: images/dickey-fuller_best_model.png
 [15]: images/arima_forecast.png
 [16]: images/arima_diagnostics.png
+[17]: https://towardsdatascience.com/an-end-to-end-project-on-time-series-analysis-and-forecasting-with-python-4835e6bf050b
+[18]: https://medium.com/open-machine-learning-course/open-machine-learning-course-topic-9-time-series-analysis-in-python-a270cb05e0b3
+[19]: https://www.udemy.com/python-for-finance-and-trading-algorithms/
+[20]: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
+[21]: https://robjhyndman.com/papers/foresight.pdf
