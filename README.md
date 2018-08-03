@@ -109,7 +109,7 @@ Optimized to adjust for lags. 14 was the best number.
 
 
 ## Analysis of Original Predictors
-|||
+|Predictor| Count|
 |:-|-:|
 |differenced_1_data   |  81 days|
 |differenced_1_cycle  |  76 days|
@@ -119,7 +119,7 @@ Optimized to adjust for lags. 14 was the best number.
 |differenced_2_cycle    | 1 days|
 
 ## RMSE of Original Predictors
-|||
+|Predictor|%|
 |:-|-:|
 |differenced_1_cycle |    79.775263|
 |data                 |   90.804479|
@@ -130,7 +130,7 @@ Optimized to adjust for lags. 14 was the best number.
 
 
 ## How did my predictors do?
-|||
+|Predictor| Count|
 |:-|-:|
 |differenced_1_data   |  80 days|
 |differenced_1_cycle  |  74 days|
