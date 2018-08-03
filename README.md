@@ -5,12 +5,12 @@
 ## Background
 For this capstone, I am working with an outside company that works heavily with time series data. They currently utilize six "ARIMA-like" prediction methods and I have been tasked with analyzing and (hopefully) optimizing these methods. They have also given me the freedom to come up with my own forecasting methods if in the hopes of improving their daily forecasts. I will be working with this company for my final capstone project as well, so this is part one of a two step process.
 
-### Data
+#### Data
 The dataset for this company consists of 10 months of daily customer activity to be used as my testing and training data. Along with the activity column, each date index has column with the forecast of day 0, the forecast for that date, through the next 14 days. There are also six unique tables for each of the six current prediction methods. The date indices and actual column are the same for each of the six tables. In addition, there are ten different files, or different feeds, with different variations of the customer activity metric. For the scope of the project, I am only going to focus on analyzing and forecasting for one of the feeds and then compare my findings with the rest of the feeds during part two of this project. Finally, each of the feeds comes with a separate data provenance file containing various metrics on the forecasts in the main file. My main focus for part one of this project is the time series activity but I will take a closer look at these metrics during the second phase of this project.
 
 To summarize, unlike the rest of my colleagues in the DSI who are working with data rich in columns and features, part one of my capstone project primarily involves two columns, the date index and the true activity and then the corresponding forecasts for this daily activity.
 
-## Process
+## EDA
 >"I only need to make predictions using one feature, that doesn't sound too difficult!" -Me, foolishly thinking to myself, when I first started working with the dataset
 
 Once I had the data, my first thought was to jump right in and start making predictions using the ARIMA method (more on this method later), which is what the current metrics are partially based on.
@@ -24,6 +24,119 @@ Step two: **Start making predictions**
 Even though my first forecast was _pretty close to perfect_ (italics = sarcasm), I decided I needed to learn more about timeseries data before I just plug numbers into a model and hope for the best. Below is a summary of what I discovered during my journey into the wonders of time series analytics.
 
 
+##Process
+
+#### Visualize and Evaluate
+One of the main things I discovered during this project is just how much you can learn about time series data from simple visualization. The shape and patterns of the raw data have significant impacts on how well different forecasting methods will perform with the data.
+
+A good first step is add a rolling mean and standard deviation to your plot to get a clearer view of the different trends in your data.
+
+![rolling][3]
+
+Even though the data has a steady pattern of ups and downs, the rolling mean and std provide a smoothing view of the data to see where it is trending.
+
+Next, I tried to see if there were any patterns in the increases and decreases. Since I have daily values, I decided to look for trends within days of the weeks.
+
+![q1][4]
+![q2][5]
+![q3][6]
+![q4][7]
+
+As you can see, there is a very clear drop off in activity on the weekends.This basic discovery shows some consistency in the data that will help with forecasting.
+
+#### Initial Analytics
+Two common approaches to find patterns in the data are Time Series Decomposition and Testing for Stationarity:
+
+Using a **decomposition plot**, you can decompose the data into three components:
+ * Trend
+ * Seasonality
+ * Noise
+
+![decomp][8]
+
+With our data, there is a lot of movement in the trend, but it is clear that there is consistency in seasonality and a relatively flat residual plot.
+
+With time series data, having a stationary trend allows for better forecasting since we can presuppose that future values will be consistent with current values. One approach to explore the stationarity of the data is by using an **Augmented Dickey-Fuller test (ADF)**. This use a hypothesis testing approach to for stationarity:
+ - $$H_0$$: the series in not stationary
+ - $$H_{\text{a}}$$:
+
+<!-- * initial analytics
+ * look for stationarity, and seasonality (end, galvanize)
+
+ * Time series Decomposition Plot (end, galvanize, udemy)
+  * Allows us to see individual parts of the data
+   * Shows trend, seasonality, and noise (end)
+  * Deseasonality from Galvanize lecture
+
+![decomp][8]
+
+ * need stationary data to make predictions (udemy, topic9 )
+  * Dickey Fuller (galvanize, topic9)
+   * helps detect stationarity and detect lag
+   * show statitics from function
+   * possible plot
+   * v- graphs: topic9 (ADF and Autocorrelation)
+  * Shapiro-Wilk Test:
+   * use function
+   * need to understand or scrap
+  * Time series Decomposition Plot (end, galvanize, udemy)
+   * Shows trend, seasonality, and noise (end)
+   * Deseasonality from Galvanize lecture
+  * Random walks/white noise (galvanize)
+   * optional
+
+* Basic methods
+ * Moving average (topic9)
+  * v-topic9
+ * Galvanize lecture has some good moving average plots
+
+ Moving Average Formula
+
+ $$\hat{y}_{t} = \frac{1}{k} \displaystyle\sum^{k}_{n=1} y_{t-n}$$
+
+  * make sure you can have a bad forecast
+
+ * Exponential smoothing (topic9)
+  * multiple levels
+  * single and double have good visuals but not sure about predictions
+  * triple has actual working forecast so lets us it
+   * it looks like statsmodels has a built in method
+    * https://stackoverflow.com/questions/50785479/holt-winters-time-series-forecasting-with-statsmodels
+
+* ARIMA (all three and chris doc)
+  * auto correlation plots (galvanize, several others )
+  * AR & MA process (galvanize)
+  * show plots for current predictors
+  * my own arima
+    * find best parameter by either using the correlation plots
+    * but since this is machine learning,
+    * v-graph and summary table: end has good plots
+
+* Prophet model
+  * need explanation
+  * v- end
+
+Train test split
+CV
+
+* Compare all models
+ * interpreting error article (compare to my other methods)
+ * topic9
+
+
+* Next Steps
+ * Boosting
+ * RNN & LSTM
+
+
+
+
+References
+End to end
+topic 1 part 9
+clickfox
+jose portilla
+interpretting error -->
 
 
 
