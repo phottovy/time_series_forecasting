@@ -107,21 +107,21 @@ Optimized to adjust for lags. 14 was the best number.
 
 
 ## Analysis of Original Predictors
-differenced_1_data     81 days
-differenced_1_cycle    76 days
-cycle_series           74 days
-data                   55 days
-differenced_2_data      3 days
-differenced_2_cycle     1 days
+- differenced_1_data     81 days
+- differenced_1_cycle    76 days
+- cycle_series           74 days
+- data                   55 days
+- differenced_2_data      3 days
+- differenced_2_cycle     1 days
 
 ## How did my predictors do?
-differenced_1_data     80 days
-differenced_1_cycle    74 days
-cycle_series           73 days
-data                   55 days
-mov_avg                 4 days
-differenced_2_data      3 days
-differenced_2_cycle     1 days
+- differenced_1_data     80 days
+- differenced_1_cycle    74 days
+- cycle_series           73 days
+- data                   55 days
+- mov_avg                 4 days
+- differenced_2_data      3 days
+- differenced_2_cycle     1 days
 
 
 
