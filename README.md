@@ -57,8 +57,8 @@ Using a **decomposition plot**, you can decompose the data into three components
 With our data, there is a lot of movement in the trend, but it is clear that there is consistency in seasonality and a relatively flat residual plot.
 
 With time series data, having a stationary trend allows for better forecasting since we can presuppose that future values will be consistent with current values. One approach to explore the stationarity of the data is by using an **Augmented Dickey-Fuller test (ADF)**. This use a hypothesis testing approach to for stationarity:
- - $$H_0$$: the series in not stationary
- - $$H_{\text{a}}$$:
+ * $H_0$: the series in not stationary
+ * $H_{\text{a}}$:
 
 <!-- * initial analytics
  * look for stationarity, and seasonality (end, galvanize)
