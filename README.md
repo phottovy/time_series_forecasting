@@ -114,6 +114,15 @@ Optimized to adjust for lags. 14 was the best number.
 - differenced_2_data      3 days
 - differenced_2_cycle     1 days
 
+## RMSE of Original Predictors
+- differenced_1_cycle     79.775263
+- data                    90.804479
+- differenced_1_data     100.160657
+- differenced_1_data     100.160657
+- differenced_2_data     170.483380
+- differenced_2_cycle    189.093569
+
+
 ## How did my predictors do?
 - differenced_1_data     80 days
 - differenced_1_cycle    74 days
