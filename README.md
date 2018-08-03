@@ -133,12 +133,12 @@ Optimized to adjust for lags. 14 was the best number.
 
 
 
-References
+<!-- References
 End to end
 topic 1 part 9
 clickfox
 jose portilla
-interpretting error
+interpretting error -->
 
 
 
