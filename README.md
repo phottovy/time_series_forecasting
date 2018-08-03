@@ -160,7 +160,7 @@ Optimized to adjust for lags. **14(two weeks)** was the best number.
 
 
 ## References:
->(I had to do a lot of learning in a short period of time. I could not have gotten as far as I did on part one of this project without the following resources)
+>(I had a lot of learning to do in a short period of time. I could not have gotten as far as I did on part one of this project without the following resources)
 
 * [An End-to-End Project on Time Series Analysis and Forecasting with Python][17] by Susan Li   
 * [Open Machine Learning Course. Topic 9. Part 1. Time series analysis in Python][18] by Dmitriy Sergeev  
