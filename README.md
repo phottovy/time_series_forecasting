@@ -17,9 +17,11 @@ To summarize, unlike the rest of my colleagues in the DSI who are working with d
 Once I had the data, my first thought was to jump right in and start making predictions using the ARIMA method (more on this method later), which is what the current metrics are partially based on.
 
 Step one: **Visualize the Data**
+
 ![raw][1]
 
 Step two: **Start making predictions**
+
 ![first_attempt][2]
 
 Even though my first forecast was _pretty close to perfect_ (italics = sarcasm), I decided I needed to learn more about timeseries data before I just plug numbers into a model and hope for the best. Below is a summary of what I discovered during my journey into the wonders of time series analytics.
@@ -107,30 +109,36 @@ Optimized to adjust for lags. 14 was the best number.
 
 
 ## Analysis of Original Predictors
-- differenced_1_data     81 days
-- differenced_1_cycle    76 days
-- cycle_series           74 days
-- data                   55 days
-- differenced_2_data      3 days
-- differenced_2_cycle     1 days
+|||
+|:-|-:|
+|differenced_1_data   |  81 days|
+|differenced_1_cycle  |  76 days|
+|cycle_series          | 74 days|
+|data                 |  55 days|
+|differenced_2_data    |  3 days|
+|differenced_2_cycle    | 1 days|
 
 ## RMSE of Original Predictors
-- differenced_1_cycle     79.775263
-- data                    90.804479
-- differenced_1_data     100.160657
-- differenced_1_data     100.160657
-- differenced_2_data     170.483380
-- differenced_2_cycle    189.093569
+|||
+|:-|-:|
+|differenced_1_cycle |    79.775263|
+|data                 |   90.804479|
+|differenced_1_data   |  100.160657|
+|differenced_1_data   |  100.160657|
+|differenced_2_data   |  170.483380|
+|differenced_2_cycle  |  189.093569|
 
 
 ## How did my predictors do?
-- differenced_1_data     80 days
-- differenced_1_cycle    74 days
-- cycle_series           73 days
-- data                   55 days
-- mov_avg                 4 days
-- differenced_2_data      3 days
-- differenced_2_cycle     1 days
+|||
+|:-|-:|
+|differenced_1_data   |  80 days|
+|differenced_1_cycle  |  74 days|
+|cycle_series         |  73 days|
+|data                 |  55 days|
+|mov_avg              |   4 days|
+|differenced_2_data   |   3 days|
+|differenced_2_cycle  |   1 days|
 
 
 
