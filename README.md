@@ -105,8 +105,12 @@ Includes seasonality
 
 ## ARIMA Forecasting
 Stands for **Autoregressive Integrated Moving Average (ARIMA)**
+- AR - assumes current series values depend on its previous values with some lag.
+- I - number of nonseasonal difference to make the series stationary.
+- MA - moving average model.  
 
-Optimized to adjust for lags. 14 was the best number.
+
+Optimized to adjust for lags. **14(two weeks)** was the best number.
 
 ![adf_lags][14]
 ![arima][15]
