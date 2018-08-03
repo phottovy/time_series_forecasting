@@ -2,7 +2,7 @@
 ## Time Series Forecasting Analysis
 
 ## Background
-For this capstone, I am working with an outside company that works heavily with time series data. They currently utilize six "ARIMA-like" prediction methods and I have been tasked with analyzing and (hopefully) optimizing these methods. They have also given me the freedom to come up with my own forecasting methods if in the hopes of improving their daily forecasts. I will be working with this company for my final capstone project as well, so this is part one of a two step process.
+For this capstone, I am working with an outside company that works heavily with time series data. They currently utilize six "ARIMA-like" prediction methods and I have been tasked with analyzing and (hopefully) optimizing these methods. They have also given me the freedom to come up with my own forecasting methods if in the hopes of improving their daily forecasts. I will be working with this company for my final capstone project as well, so this is part one of a two-step process.
 
 #### Data
 The dataset for this company consists of 10 months of daily customer activity to be used as my testing and training data. Along with the activity column, each date index has column with the forecast of day 0, the forecast for that date, through the next 14 days. There are also six unique tables for each of the six current prediction methods. The date indices and actual column are the same for each of the six tables. In addition, there are ten different files, or different feeds, with different variations of the customer activity metric. For the scope of the project, I am only going to focus on analyzing and forecasting for one of the feeds and then compare my findings with the rest of the feeds during part two of this project. Finally, each of the feeds comes with a separate data provenance file containing various metrics on the forecasts in the main file. My main focus for part one of this project is the time series activity but I will take a closer look at these metrics during the second phase of this project.
@@ -29,7 +29,7 @@ Even though my first forecast was _pretty close to perfect_ (italics = sarcasm),
 #### Visualize and Evaluate
 One of the main things I discovered during this project is just how much you can learn about time series data from simple visualization. The shape and patterns of the raw data have significant impacts on how well different forecasting methods will perform with the data.
 
-A good first step is add a rolling mean and standard deviation to your plot to get a clearer view of the different trends in your data.
+A good first step is adding a rolling mean and standard deviation to your plot to get a clearer view of the different trends in your data.
 
 ![rolling][3]
 
@@ -42,7 +42,7 @@ Next, I tried to see if there were any patterns in the increases and decreases. 
 ![q3][6]
 ![q4][7]
 
-As you can see, there is a very clear drop off in activity on the weekends.This basic discovery shows some consistency in the data that will help with forecasting.
+As you can see, there is a very clear drop off in activity on the weekends. This basic discovery shows some consistency in the data that will help with forecasting.
 
 #### Initial Analytics
 Two common approaches to find patterns in the data are Time Series Decomposition and Testing for Stationarity:
@@ -71,19 +71,19 @@ With time series data, having a stationary trend allows for better forecasting s
  * \# of observations: 290
  * 0.03402 <= 0.05. Data **is stationary**
 
-Fortunately our data is stationary which means we can start forecasting! There are techniques to convert non-stationary data to be stationary but I am not going to go into details about those.
+Fortunately, our data is stationary which means we can start forecasting! There are techniques to convert non-stationary data to be stationary, but I am not going to go into details about those.
 
 ## Forecast
-As stated before, this is a journey into time series analysis so we are going to start at the bottom and work our way up.
+As stated before, this is a journey into time series analysis, so we are going to start at the bottom and work our way up.
 
 #### Moving Average Forecast
 The most basic approach is to use the rolling mean we used earlier to forecast future values.
 
-Using the \# of lags calculated in the ADF test, I used a 14 day rolling mean for my predictions
+Using the \# of lags calculated in the ADF test, I used a 14-day rolling mean for my predictions
 
 ![move_avg][10]
 
-Clearly the predictions will follow the overall trend of the series but it will give you the desired results.
+Clearly the predictions will follow the overall trend of the series, but it will give you the desired results.
 
 #### Exponential Smoothing
 One of the next techniques is exponential smoothing which has multiple levels:
@@ -105,9 +105,9 @@ Includes seasonality
 
 ## ARIMA Forecasting
 Stands for **Autoregressive Integrated Moving Average (ARIMA)**
-- AR - assumes current series values depend on its previous values with some lag.
-- I - number of nonseasonal differences to make the series stationary.
-- MA - moving average model.  
+- AR - assumes current series values depend on its previous values with some lag
+- I - number of non-seasonal differences to make the series stationary
+- MA - moving average model  
 
 
 Optimized to adjust for lags. **14(two weeks)** was the best number.
