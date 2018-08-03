@@ -1,5 +1,5 @@
-# Time Series Forecasting
-
+# Looking Back to (predict) the Future
+## Time Series Forecasting Analysis
 
 ## Background
 For this capstone, I am working with an outside company that works heavily with time series data. They currently utilize six "ARIMA-like" prediction methods and I have been tasked with analyzing and (hopefully) optimizing these methods. They have also given me the freedom to come up with my own forecasting methods if in the hopes of improving their daily forecasts. I will be working with this company for my final capstone project as well, so this is part one of a two step process.
