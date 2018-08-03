@@ -1,6 +1,5 @@
-# time_series_forecasting
+# Time Series Forecasting
 
-<!-- # 14,0,14,1 -->
 
 ## Background
 For this capstone, I am working with an outside company that works heavily with time series data. They currently utilize six "ARIMA-like" prediction methods and I have been tasked with analyzing and (hopefully) optimizing these methods. They have also given me the freedom to come up with my own forecasting methods if in the hopes of improving their daily forecasts. I will be working with this company for my final capstone project as well, so this is part one of a two step process.
@@ -84,42 +83,50 @@ Using the \# of lags calculated in the ADF test, I used a 14 day rolling mean fo
 
 Clearly the predictions will follow the overall trend of the series but it will give you the desired results.
 
-<!--
+#### Exponential Smoothing
+One of the next techniques is exponential smoothing which has multiple levels:
+
+ **Single Exponential Smoothing**
+![exp_1][11]
+
+ **Double Exponential Smoothing**
+![exp_2][12]
+
+ **Triple exponential smoothing a.k.a. Holt-Winters**
+![exp_3][13]
 
 
-  * make sure you can have a bad forecast
+## ARIMA Forecasting
+Stands for **Autoregressive Integrated Moving Average (ARIMA)**
 
- * Exponential smoothing (topic9)
-  * multiple levels
-  * single and double have good visuals but not sure about predictions
-  * triple has actual working forecast so lets us it
-   * it looks like statsmodels has a built in method
-    * https://stackoverflow.com/questions/50785479/holt-winters-time-series-forecasting-with-statsmodels
+Optimized to adjust for lags. 14 was the best number.
 
-* ARIMA (all three and chris doc)
-  * auto correlation plots (galvanize, several others )
-  * AR & MA process (galvanize)
-  * show plots for current predictors
-  * my own arima
-    * find best parameter by either using the correlation plots
-    * but since this is machine learning,
-    * v-graph and summary table: end has good plots
-
-Initial results
-
-* Prophet model
-  * need explanation
-  * v- end
-
-Train test split
-CV
-
-* Compare all models
- * interpreting error article (compare to my other methods)
- * topic9
+![adf_lags][14]
+![arima][15]
+![arima_diag][16]
 
 
-* Next Steps
+## Analysis of Original Predictors
+differenced_1_data     81 days
+differenced_1_cycle    76 days
+cycle_series           74 days
+data                   55 days
+differenced_2_data      3 days
+differenced_2_cycle     1 days
+
+## How did my predictors do?
+differenced_1_data     80 days
+differenced_1_cycle    74 days
+cycle_series           73 days
+data                   55 days
+mov_avg                 4 days
+differenced_2_data      3 days
+differenced_2_cycle     1 days
+
+
+
+## Next Steps
+ * Finish readme
  * Boosting
  * RNN & LSTM
 
@@ -134,7 +141,7 @@ jose portilla
 interpretting error
 
 
- -->
+
 
 
 
@@ -148,3 +155,9 @@ interpretting error
 [8]: images/decomp_plots.png
 [9]: images/adf_plot.png
 [10]: images/rolling_mean_forecast.png
+[11]: images/exponential_smooth.png
+[12]: images/doub_exp_smooth.png
+[13]: images/trip_exp_smooth.png
+[14]: images/adf_with_lags.png
+[15]: images/arima_forecast.png
+[16]: images/arima_diagnostics.png
