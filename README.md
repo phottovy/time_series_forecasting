@@ -11,6 +11,8 @@ The dataset for this company consists of 10 months of daily customer activity to
 To summarize, unlike the rest of my colleagues in the DSI who are working with data rich in columns and features, part one of my capstone project primarily involves two columns, the date index and the true activity and then the corresponding forecasts for this daily activity.
 
 ## EDA
+
+#### Initial Analysis
 >"I only need to make predictions using one feature, that doesn't sound too difficult!" -Me, foolishly thinking to myself, when I first started working with the dataset
 
 Once I had the data, my first thought was to jump right in and start making predictions using the ARIMA method (more on this method later), which is what the current metrics are partially based on.
@@ -22,9 +24,6 @@ Step two: **Start making predictions**
 ![first_attempt][2]
 
 Even though my first forecast was _pretty close to perfect_ (italics = sarcasm), I decided I needed to learn more about timeseries data before I just plug numbers into a model and hope for the best. Below is a summary of what I discovered during my journey into the wonders of time series analytics.
-
-
-##Process
 
 #### Visualize and Evaluate
 One of the main things I discovered during this project is just how much you can learn about time series data from simple visualization. The shape and patterns of the raw data have significant impacts on how well different forecasting methods will perform with the data.
@@ -56,43 +55,37 @@ Using a **decomposition plot**, you can decompose the data into three components
 
 With our data, there is a lot of movement in the trend, but it is clear that there is consistency in seasonality and a relatively flat residual plot.
 
-With time series data, having a stationary trend allows for better forecasting since we can presuppose that future values will be consistent with current values. One approach to explore the stationarity of the data is by using an **Augmented Dickey-Fuller test (ADF)**. This use a hypothesis testing approach to for stationarity:
- * $H_0$: the series in not stationary
- * $H_{\text{a}}$:
+With time series data, having a stationary trend allows for better forecasting since we can presuppose that future values will be consistent with current values. One approach to explore the stationarity of the data is by using an **Augmented Dickey-Fuller test (ADF)**. This use a hypothesis testing approach to for stationarity with the null hypothesis stating that the series is **not stationary** and the alternative hypothesis that it is stationary. Using statsmodels built in `adfuller` function, our date gets the following results:
 
-<!-- * initial analytics
- * look for stationarity, and seasonality (end, galvanize)
+![adf][9]
+\* We will discuss the correlation plots later.
 
- * Time series Decomposition Plot (end, galvanize, udemy)
-  * Allows us to see individual parts of the data
-   * Shows trend, seasonality, and noise (end)
-  * Deseasonality from Galvanize lecture
+ **Augmented Dickey-Fuller Full Results:**
+ * T-Statistic: -3.00941
+ * p-value: 0.03402
+ * adf-1%: -3.45310
+ * adf-5%: -2.87156
+ * adf-10%: -2.57211
+ * \# Lags: 14
+ * \# of observations: 290
+ * 0.03402 <= 0.05. Data **is stationary**
 
-![decomp][8]
+Fortunately our data is stationary which means we can start forecasting! There are techniques to convert non-stationary data to be stationary but I am not going to go into details about those.
 
- * need stationary data to make predictions (udemy, topic9 )
-  * Dickey Fuller (galvanize, topic9)
-   * helps detect stationarity and detect lag
-   * show statitics from function
-   * possible plot
-   * v- graphs: topic9 (ADF and Autocorrelation)
-  * Shapiro-Wilk Test:
-   * use function
-   * need to understand or scrap
-  * Time series Decomposition Plot (end, galvanize, udemy)
-   * Shows trend, seasonality, and noise (end)
-   * Deseasonality from Galvanize lecture
-  * Random walks/white noise (galvanize)
-   * optional
+## Forecast
+As stated before, this is a journey into time series analysis so we are going to start at the bottom and work our way up.
 
-* Basic methods
- * Moving average (topic9)
-  * v-topic9
- * Galvanize lecture has some good moving average plots
+#### Moving Average Forecast
+The most basic approach is to use the rolling mean we used earlier to forecast future values.
 
- Moving Average Formula
+Using the \# of lags calculated in the ADF test, I used a 14 day rolling mean for my predictions
 
- $$\hat{y}_{t} = \frac{1}{k} \displaystyle\sum^{k}_{n=1} y_{t-n}$$
+![move_avg][10]
+
+Clearly the predictions will follow the overall trend of the series but it will give you the desired results.
+
+<!--
+
 
   * make sure you can have a bad forecast
 
@@ -111,6 +104,8 @@ With time series data, having a stationary trend allows for better forecasting s
     * find best parameter by either using the correlation plots
     * but since this is machine learning,
     * v-graph and summary table: end has good plots
+
+Initial results
 
 * Prophet model
   * need explanation
@@ -136,10 +131,10 @@ End to end
 topic 1 part 9
 clickfox
 jose portilla
-interpretting error -->
+interpretting error
 
 
-
+ -->
 
 
 
@@ -151,3 +146,5 @@ interpretting error -->
 [6]: images/activity_by_date_3.png
 [7]: images/activity_by_date_4.png
 [8]: images/decomp_plots.png
+[9]: images/adf_plot.png
+[10]: images/rolling_mean_forecast.png
