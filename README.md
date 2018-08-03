@@ -106,7 +106,7 @@ Includes seasonality
 ## ARIMA Forecasting
 Stands for **Autoregressive Integrated Moving Average (ARIMA)**
 - AR - assumes current series values depend on its previous values with some lag.
-- I - number of nonseasonal difference to make the series stationary.
+- I - number of nonseasonal differences to make the series stationary.
 - MA - moving average model.  
 
 
