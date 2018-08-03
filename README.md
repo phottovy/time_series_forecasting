@@ -89,12 +89,17 @@ Clearly the predictions will follow the overall trend of the series but it will 
 One of the next techniques is exponential smoothing which has multiple levels:
 
  **Single Exponential Smoothing**
+
 ![exp_1][11]
 
  **Double Exponential Smoothing**
+Two smoothing parameters
+
 ![exp_2][12]
 
  **Triple exponential smoothing a.k.a. Holt-Winters**
+Includes seasonality
+
 ![exp_3][13]
 
 
