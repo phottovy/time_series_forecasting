@@ -186,7 +186,7 @@ Optimized to adjust for lags. **14(two weeks)** was the best number.
 [11]: images/exponential_smooth.png
 [12]: images/doub_exp_smooth.png
 [13]: images/trip_exp_smooth.png
-[14]: images/dickey-fuller_best_model.png
+[14]: images/adf_with_lags.png
 [15]: images/arima_forecast.png
 [16]: images/arima_diagnostics.png
 [17]: https://towardsdatascience.com/an-end-to-end-project-on-time-series-analysis-and-forecasting-with-python-4835e6bf050b
