@@ -1,4 +1,4 @@
-# Looking Back to (predict) the Future
+# Looking Back to (Predict) the Future
 ## Time Series Forecasting Analysis
 
 ## Background
