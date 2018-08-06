@@ -112,9 +112,13 @@ Stands for **Autoregressive Integrated Moving Average (ARIMA)**
 
 Optimized to adjust for lags. **14(two weeks)** was the best number.
 
-![adf_lags][14]
-![arima][15]
-![arima_diag][16]
+![arima][14]
+
+![arima_zoom][15]
+
+![adf_lags][16]
+
+![arima_diag][17]
 
 
 ## Analysis of Original Predictors
@@ -162,11 +166,11 @@ Optimized to adjust for lags. **14(two weeks)** was the best number.
 ## References:
 >(I had a lot of learning to do in a short period of time. I could not have gotten as far as I did on part one of this project without the following resources)
 
-* [An End-to-End Project on Time Series Analysis and Forecasting with Python][17] by Susan Li   
-* [Open Machine Learning Course. Topic 9. Part 1. Time series analysis in Python][18] by Dmitriy Sergeev  
-* [Python for Financial Analysis and Algorithmic Trading][19] by Jose Portilla  
-* [A comprehensive beginner’s guide to create a Time Series Forecast (with Codes in Python)][20] by Aarshay Jain  
-* [Another Look at Forecast-Accuracy Metrics for Intermittent Demand][21] by Rob J. Hyndman
+* [An End-to-End Project on Time Series Analysis and Forecasting with Python][18] by Susan Li   
+* [Open Machine Learning Course. Topic 9. Part 1. Time series analysis in Python][19] by Dmitriy Sergeev  
+* [Python for Financial Analysis and Algorithmic Trading][20] by Jose Portilla  
+* [A comprehensive beginner’s guide to create a Time Series Forecast (with Codes in Python)][21] by Aarshay Jain  
+* [Another Look at Forecast-Accuracy Metrics for Intermittent Demand][22] by Rob J. Hyndman
 
 
 
@@ -186,11 +190,12 @@ Optimized to adjust for lags. **14(two weeks)** was the best number.
 [11]: images/exponential_smooth.png
 [12]: images/doub_exp_smooth.png
 [13]: images/trip_exp_smooth.png
-[14]: images/adf_with_lags.png
-[15]: images/arima_forecast.png
-[16]: images/arima_diagnostics.png
-[17]: https://towardsdatascience.com/an-end-to-end-project-on-time-series-analysis-and-forecasting-with-python-4835e6bf050b
-[18]: https://medium.com/open-machine-learning-course/open-machine-learning-course-topic-9-time-series-analysis-in-python-a270cb05e0b3
-[19]: https://www.udemy.com/python-for-finance-and-trading-algorithms/
-[20]: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
-[21]: https://robjhyndman.com/papers/foresight.pdf
+[14]: images/arima_forecast.png
+[15]: images/arima_forecast_zoom.png
+[16]: images/adf_with_lags.png
+[17]: images/arima_diagnostics.png
+[18]: https://towardsdatascience.com/an-end-to-end-project-on-time-series-analysis-and-forecasting-with-python-4835e6bf050b
+[19]: https://medium.com/open-machine-learning-course/open-machine-learning-course-topic-9-time-series-analysis-in-python-a270cb05e0b3
+[20]: https://www.udemy.com/python-for-finance-and-trading-algorithms/
+[21]: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
+[22]: https://robjhyndman.com/papers/foresight.pdf
