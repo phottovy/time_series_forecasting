@@ -97,7 +97,7 @@ Two smoothing parameters
 
 ![exp_2][12]
 
- **Triple exponential smoothing a.k.a. Holt-Winters**
+ **Triple exponential smoothing a.k.a. Holt-Winters**  
 Includes seasonality
 
 ![exp_3][13]
