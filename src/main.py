@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.seasonal import seasonal_decompose
 from scipy.stats import shapiro
-from sklearn.metrics import r2_score, median_absolute_error, mean_absolute_error, mean_squared_error, mean_squared_log_error
+from sklearn import metrics
 from datetime import datetime, timedelta
 
 
@@ -37,7 +37,42 @@ def moving_avg_forecast(data, roll_periods=14):
     return data
 
 
-#add code for other prediction methods
+def sing_exp_forecast(train_data, test_data):
+    '''
+    Calculate Single Exponential Smoothing Forecast
+    '''
+    sing_exp = SimpleExpSmoothing(train_data)
+    sing_exp_model = sing_exp.fit()
+    sing_exp_df = train_data.copy()
+    sing_exp_df['sing_exp'] = sing_exp_model.fittedvalues
+    sing_exp_df = sing_exp_df.append(test_data)
+    for date in pd.date_range('2016-09-01', '2016-10-31'):
+        sing_exp_df.loc[date, 'sing_exp'] = sing_exp_model.predict(date)[0]
+        sing_exp = SimpleExpSmoothing(sing_exp_df.loc[:date, 'this_data'])
+        sing_exp_model = sing_exp.fit()
+    return sing_exp_df
+
+# optimized inputs
+p, d, q = 14, 1, 0
+P, D, Q = 14, 1, 1
+s = 14
+
+
+def opt_arima_forecast(train_data, test_data, results=False):
+    if results:
+        train_results = results
+    else:
+        train_model = sm.tsa.statespace.SARIMAX(
+            train_data, order=(p, d, q), seasonal_order=(P, D, Q, s))
+        # this model takes some time to fit
+        train_results = train_model.fit()
+    opt_arima_df = train_data.copy()
+    opt_arima_df['opt_arima'] = train_results.fittedvalues
+    opt_arima_df = opt_arima_df.append(test_data)
+    opt_arima_df.loc['2016-09-01':, 'opt_arima'] = train_results.forecast(61)
+    return opt_arima_df
+
+
 
 
 
@@ -173,7 +208,7 @@ def root_mean_squared_error(y_true, y_pred):
     Calculates RMSE metric
     '''
     # return np.sqrt(mean_squared_error(y_true, y_pred))
-    return np.sqrt(((y_true.sub(y_pred)) ** 2).mean())
+    return np.sqrt(((y_true - y_pred)) ** 2).mean()
 
 
 def mean_absolute_percentage_error(y_true, y_pred):
@@ -285,13 +320,79 @@ def decomp_plots(data, savefig=False):
     plt.show()
 
 
+def adf_plot(data, lags=None, savefig=False):
+    """
+    Plot results of Augmented Dickey-Fuller Test
+    Plot Autocorrelation and Partial Autocorrelation Plots
+    """
+    fig = plt.figure(figsize=(14, 8))
+    layout = (2, 2)
+    adf_ax = plt.subplot2grid(layout, (0, 0), colspan=2)
+    acf_ax = plt.subplot2grid(layout, (1, 0))
+    pacf_ax = plt.subplot2grid(layout, (1, 1))
+
+    data.plot(ax=adf_ax)
+    p_value = adfuller(data)[1]
+    fig.suptitle('Time Series Analysis Plots\n', fontsize=22)
+    adf_ax.set_title(f'Dickey-Fuller: p={p_value:.5f}', fontsize=16)
+    plot_acf(data, acf_ax, lags)
+    plot_pacf(data, pacf_ax, lags)
+    plt.tight_layout()
+    plt.subplots_adjust(top=0.9)
+    if savefig:
+        plt.savefig('../images/adf_plot.png')
+    plt.show()
+
+
+def sing_exp_plot(data, alpha, savefig=False):
+    plt.figure()
+    test_begin = '2016-09-01'
+    plt.plot(data.loc[:test_begin, 'this_data'], label='Train Actuals')
+    plt.plot(data.loc[:test_begin, 'sing_exp'], label='Train Model')
+    plt.plot(data.loc[test_begin:, 'this_data'], label='Test Actuals')
+    plt.plot(data.loc[test_begin:, 'sing_exp'], label=f'Test Forecast')
+    sing_rmse = root_mean_squared_error(
+        data.loc[test_begin:, 'this_data'], data.loc[test_begin:, 'sing_exp'])
+    plt.suptitle('Single Exponential Smoothing Forecast\n', fontsize=22)
+    plt.title(
+        f'Test RMSE = {sing_rmse:.3f} | Alpha = {alpha:.3f}', fontsize=16)
+    plt.vlines(test_begin, data['this_data'].min(),
+               data['this_data'].max(), linestyles='dashed')
+    plt.legend()
+    plt.tight_layout()
+    plt.subplots_adjust(top=0.84)
+    if savefig:
+        plt.savefig('../images/exponential_smooth.png', dpi=72)
+    plt.show()
+
+
+def opt_arima_plot(data, zoom=False, savefig=False):
+    plt.figure()
+    test_begin = '2016-09-01'
+    plt.plot(data.loc[:test_begin, 'this_data'], label='Train Actuals')
+    plt.plot(data.loc[:test_begin, 'opt_arima'], label='Train Model')
+    plt.plot(data.loc[test_begin:, 'this_data'], label='Test Actuals')
+    plt.plot(data.loc[test_begin:, 'opt_arima'], label=f'Test Forecast')
+    arima_rmse = root_mean_squared_error(
+        data.loc[test_begin:, 'this_data'], data.loc[test_begin:, 'opt_arima'])
+    plt.suptitle('Optimized Arima Forecast\n', fontsize=22)
+    plt.title(f'Test RMSE = {arima_rmse:.3f}', fontsize=16)
+    plt.vlines(test_begin, data['this_data'].min(),
+               data['this_data'].max(), linestyles='dashed')
+    if zoom:
+        plt.xlim('2016-08-01', '2016-10-31')
+    plt.legend()
+    plt.tight_layout()
+    plt.subplots_adjust(top=0.84)
+    if savefig:
+        plt.savefig(f'../images/arima_forecast.png', dpi=72)
+    plt.show()
+
 
 if __name__ == '__main__':
 
-
-
-    METRIC_DICT = {'MSE': mean_squared_error, 'RMSE': root_mean_squared_error, 'R2': r2_score, 'MAE': mean_absolute_error,
-                   'MEDAE': median_absolute_error, 'MSLE': mean_squared_log_error, 'MAPE': mean_absolute_percentage_error}
+    METRIC_DICT = {'MSE': metrics.mean_squared_error, 'RMSE': root_mean_squared_error, 'R2': metrics.r2_score,
+               'MAE': metrics.mean_absolute_error, 'MEDAE': metrics.median_absolute_error, 'MAPE': mean_absolute_percentage_error}
 
 
 
