@@ -1,17 +1,40 @@
 # Looking Back to (Predict) the Future
+## Part One
+***
 ## Time Series Forecasting Analysis
 
+Galvanize Data Science Immersive | Capstone #2 | July 2018
+
+### Pat Hottovy
+#### Data Scientist
+Email: p.hottovy@gmail.com  
+Linkedin: [in/patrick-hottovy](https://www.linkedin.com/in/patrick-hottovy/)
+***
+
+## Table of Contents
+* [Background](#background)
+* [EDA](#eda)
+* [Forecasting Methods](#forecast)
+* [Analysis](#analysis)
+* [Next Steps](#steps)
+<!-- * [About Me](#about-me) -->
+* [References](#references)
+
+
+<a id='background'></a>
 ## Background
+***
 For this capstone, I am working with an outside company that works heavily with time series data. They currently utilize six "ARIMA-like" prediction methods and I have been tasked with analyzing and (hopefully) optimizing these methods. They have also given me the freedom to come up with my own forecasting methods if in the hopes of improving their daily forecasts. I will be working with this company for my final capstone project as well, so this is part one of a two-step process.
 
-#### Data
+### Data
 The dataset for this company consists of 10 months of daily customer activity to be used as my testing and training data. Along with the activity column, each date index has column with the forecast of day 0, the forecast for that date, through the next 14 days. There are also six unique tables for each of the six current prediction methods. The date indices and actual column are the same for each of the six tables. In addition, there are ten different files, or different feeds, with different variations of the customer activity metric. For the scope of the project, I am only going to focus on analyzing and forecasting for one of the feeds and then compare my findings with the rest of the feeds during part two of this project. Finally, each of the feeds comes with a separate data provenance file containing various metrics on the forecasts in the main file. My main focus for part one of this project is the time series activity but I will take a closer look at these metrics during the second phase of this project.
 
 To summarize, unlike the rest of my colleagues in the DSI who are working with data rich in columns and features, part one of my capstone project primarily involves two columns, the date index and the true activity and then the corresponding forecasts for this daily activity.
 
+<a id='eda'></a>
 ## EDA
-
-#### Initial Analysis
+***
+### Initial Analysis
 >"I only need to make predictions using one feature, that doesn't sound too difficult!" -Me, foolishly thinking to myself, when I first started working with the dataset
 
 Once I had the data, my first thought was to jump right in and start making predictions using the ARIMA method (more on this method later), which is what the current metrics are partially based on.
@@ -26,7 +49,7 @@ Step two: **Start making predictions**
 
 Even though my first forecast was _pretty close to perfect_ (italics = sarcasm), I decided I needed to learn more about timeseries data before I just plug numbers into a model and hope for the best. Below is a summary of what I discovered during my journey into the wonders of time series analytics.
 
-#### Visualize and Evaluate
+### Visualize and Evaluate
 One of the main things I discovered during this project is just how much you can learn about time series data from simple visualization. The shape and patterns of the raw data have significant impacts on how well different forecasting methods will perform with the data.
 
 A good first step is adding a rolling mean and standard deviation to your plot to get a clearer view of the different trends in your data.
@@ -44,7 +67,7 @@ Next, I tried to see if there were any patterns in the increases and decreases. 
 
 As you can see, there is a very clear drop off in activity on the weekends. This basic discovery shows some consistency in the data that will help with forecasting.
 
-#### Initial Analytics
+### Initial Analytics
 Two common approaches to find patterns in the data are Time Series Decomposition and Testing for Stationarity:
 
 Using a **decomposition plot**, you can decompose the data into three components:
@@ -73,10 +96,12 @@ With time series data, having a stationary trend allows for better forecasting s
 
 Fortunately, our data is stationary which means we can start forecasting! There are techniques to convert non-stationary data to be stationary, but I am not going to go into details about those.
 
-## Forecast
+<a id='forecast'></a>
+## Forecasting Methods
+***
 As stated before, this is a journey into time series analysis, so we are going to start at the bottom and work our way up.
 
-#### Moving Average Forecast
+### Moving Average Forecast
 The most basic approach is to use the rolling mean we used earlier to forecast future values.
 
 Using the \# of lags calculated in the ADF test, I used a 14-day rolling mean for my predictions
@@ -85,7 +110,7 @@ Using the \# of lags calculated in the ADF test, I used a 14-day rolling mean fo
 
 Clearly the predictions will follow the overall trend of the series, but it will give you the desired results.
 
-#### Exponential Smoothing
+### Exponential Smoothing
 One of the next techniques is exponential smoothing which has multiple levels:
 
  **Single Exponential Smoothing**
@@ -103,14 +128,14 @@ Includes seasonality
 ![exp_3][13]
 
 
-## ARIMA Forecasting
+### ARIMA Forecasting
 Stands for **Autoregressive Integrated Moving Average (ARIMA)**
 - AR - assumes current series values depend on its previous values with some lag
 - I - number of non-seasonal differences to make the series stationary
 - MA - moving average model  
 
 
-Optimized to adjust for lags. **14(two weeks)** was the best number.
+Optimized to adjust for lags. **14 days** was the best number.
 
 ![arima][14]
 
@@ -120,7 +145,7 @@ Optimized to adjust for lags. **14(two weeks)** was the best number.
 
 ![arima_diag][17]
 
-
+<a id='analysis'></a>
 ## Analysis of Original Predictors
 |Predictor| Count|
 |:-|-:|
@@ -153,17 +178,19 @@ Optimized to adjust for lags. **14(two weeks)** was the best number.
 |differenced_2_data   |   3 days|
 |differenced_2_cycle  |   1 days|
 
-
+<a id='next'></a>
 ## Next Steps
+***
  * Finish readme
- * Boosting
+ * Ensemble Methods
  * RNN & LSTM
  * Presentation of Results
 
 
 
-
+<a id='references'></a>
 ## References:
+***
 >(I had a lot of learning to do in a short period of time. I could not have gotten as far as I did on part one of this project without the following resources)
 
 * [An End-to-End Project on Time Series Analysis and Forecasting with Python][18] by Susan Li   
