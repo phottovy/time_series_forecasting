@@ -1,7 +1,5 @@
 # Looking Back to (Predict) the Future
-## Part One
-
-## Time Series Forecasting Analysis
+## Part One - Time Series Forecasting Analysis
 
 Galvanize Data Science Immersive | Capstone #2 | July 2018
 
