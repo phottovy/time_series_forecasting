@@ -1,6 +1,6 @@
 # Looking Back to (Predict) the Future
 ## Part One
-***
+
 ## Time Series Forecasting Analysis
 
 Galvanize Data Science Immersive | Capstone #2 | July 2018
@@ -9,7 +9,7 @@ Galvanize Data Science Immersive | Capstone #2 | July 2018
 #### Data Scientist
 Email: p.hottovy@gmail.com  
 Linkedin: [in/patrick-hottovy](https://www.linkedin.com/in/patrick-hottovy/)
-***
+
 
 ## Table of Contents
 * [Background](#background)
@@ -23,7 +23,6 @@ Linkedin: [in/patrick-hottovy](https://www.linkedin.com/in/patrick-hottovy/)
 
 <a id='background'></a>
 ## Background
-***
 For this capstone, I am working with an outside company that works heavily with time series data. They currently utilize six "ARIMA-like" prediction methods and I have been tasked with analyzing and (hopefully) optimizing these methods. They have also given me the freedom to come up with my own forecasting methods if in the hopes of improving their daily forecasts. I will be working with this company for my final capstone project as well, so this is part one of a two-step process.
 
 ### Data
@@ -33,7 +32,6 @@ To summarize, unlike the rest of my colleagues in the DSI who are working with d
 
 <a id='eda'></a>
 ## EDA
-***
 ### Initial Analysis
 >"I only need to make predictions using one feature, that doesn't sound too difficult!" -Me, foolishly thinking to myself, when I first started working with the dataset
 
@@ -98,7 +96,6 @@ Fortunately, our data is stationary which means we can start forecasting! There 
 
 <a id='forecast'></a>
 ## Forecasting Methods
-***
 As stated before, this is a journey into time series analysis, so we are going to start at the bottom and work our way up.
 
 ### Moving Average Forecast
@@ -180,7 +177,6 @@ Optimized to adjust for lags. **14 days** was the best number.
 
 <a id='next'></a>
 ## Next Steps
-***
  * Finish readme
  * Ensemble Methods
  * RNN & LSTM
@@ -190,7 +186,6 @@ Optimized to adjust for lags. **14 days** was the best number.
 
 <a id='references'></a>
 ## References:
-***
 >(I had a lot of learning to do in a short period of time. I could not have gotten as far as I did on part one of this project without the following resources)
 
 * [An End-to-End Project on Time Series Analysis and Forecasting with Python][18] by Susan Li   
