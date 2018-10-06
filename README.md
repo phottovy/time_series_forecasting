@@ -3,9 +3,11 @@
 
 Galvanize Data Science Immersive | Capstone #2 | July 2018
 
+This is part one of my capstone project using this dataset. Part two can be found [here][23].
+
 ### Pat Hottovy
 #### Data Scientist
-Email: p.hottovy@gmail.com  
+Email: phottovy@gmail.com  
 Linkedin: [in/patrick-hottovy](https://www.linkedin.com/in/patrick-hottovy/)
 
 
@@ -14,7 +16,7 @@ Linkedin: [in/patrick-hottovy](https://www.linkedin.com/in/patrick-hottovy/)
 * [EDA](#eda)
 * [Forecasting Methods](#forecast)
 * [Analysis](#analysis)
-* [Next Steps](#steps)
+<!-- * [Next Steps](#steps) -->
 <!-- * [About Me](#about-me) -->
 * [References](#references)
 
@@ -173,12 +175,11 @@ Optimized to adjust for lags. **14 days** was the best number.
 |differenced_2_data   |   3 days|
 |differenced_2_cycle  |   1 days|
 
-<a id='next'></a>
+<!-- <a id='next'></a>
 ## Next Steps
- * Finish readme
  * Ensemble Methods
  * RNN & LSTM
- * Presentation of Results
+ * Presentation of Results -->
 
 
 
@@ -219,3 +220,4 @@ Optimized to adjust for lags. **14 days** was the best number.
 [20]: https://www.udemy.com/python-for-finance-and-trading-algorithms/
 [21]: https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/
 [22]: https://robjhyndman.com/papers/foresight.pdf
+[23]: https://github.com/phottovy/customer_analytics
